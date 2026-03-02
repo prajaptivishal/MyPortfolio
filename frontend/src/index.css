@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  /* Sophisticated paper/canvas texture */
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.01) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Fluid animations */
+* {
+  @apply transition-all duration-500 ease-out;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6b00;
+}
+
+@theme {
+  --color-background: #ffffff;
+  --color-primary-accent: #1a1a1a;
+  --color-secondary-accent: #ff6b00; /* Vibrant Orange */
+  --color-security-green: #4ade80; /* Security Green */
+  --color-surface: #fcfcfc;
+  --color-muted: #666666;
+  
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-gradient-x: gradient-x 3s ease infinite;
+  
+  @keyframes gradient-x {
+    0%, 100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-primary-accent;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-5xl mx-auto px-6 py-16;
+  }
+
+  .card-base {
+    @apply bg-white rounded-2xl border border-black/5 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-secondary-accent text-white font-bold rounded-lg shadow-lg hover:shadow-secondary-accent/20 transition-all active:scale-95;
+  }
+
+  .btn-outline {
+    @apply px-8 py-3 bg-transparent border border-black/10 text-primary-accent font-bold rounded-lg hover:bg-black/5 transition-all active:scale-95;
+  }
+
+  .badge-tag {
+    @apply px-2 py-1 bg-secondary-accent/10 text-secondary-accent text-[9px] font-bold uppercase tracking-wider rounded-md;
+  }
+}
+
+.status-indicator {
+  @apply w-2 h-2 rounded-full bg-secondary-accent shadow-[0_0_12px_rgba(255,107,0,0.4)] animate-pulse;
+}
+
+.status-indicator-green {
+  @apply w-2 h-2 rounded-full bg-security-green shadow-[0_0_12px_rgba(74,222,128,0.4)] animate-pulse;
+}
+
+/* Dashed Border Utility using SVG for exact dash control */
+.dashed-border {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.svg.com/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23FF6B0066' stroke-width='2' stroke-dasharray='12%2c 16' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 24px;
+}
+
+/* Dark Security Section Style */
+.security-bg {
+  background: radial-gradient(circle at top right, #0a1f16, #050a08);
+}
+
+.projects-antique-bg {
+  background-image:
+    radial-gradient(circle at top left, rgba(0,0,0,0.08) 0, transparent 55%),
+    radial-gradient(circle at bottom right, rgba(0,0,0,0.12) 0, transparent 60%),
+    linear-gradient(135deg, #f7e2c5, #e1c193, #cfaa74);
+  background-size: cover;
+}
