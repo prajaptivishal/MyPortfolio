@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import profilePic from '../assets/me.jpeg';
-import resumeFile from '../assets/Vishal.pdf';
+import resumeFile from '../assets/MyResume.pdf';
 
 const Hero = () => {
   const containerRef = useRef(null);
