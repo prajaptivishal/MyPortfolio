@@ -56,28 +56,32 @@ const Hero = () => {
               Hi, I'm Vishal Prajapati
             </h2>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 text-primary-accent tracking-tighter leading-[1.05]">
-              Passionate <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-accent via-secondary-accent to-primary-accent bg-[length:200%_auto] animate-gradient-x">
-                Full-Stack
-              </span> <br />
-              & Security Expert
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 text-primary-accent tracking-tighter leading-[1.05]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-accent via-secondary-accent to-primary-accent bg-[length:200%_auto] animate-gradient-x block">
+                Java
+              </span>
+              <span className="block">Full-Stack</span>
+              <span className="block">Developer</span>
             </h1>
 
+            <p className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em] text-secondary-accent/80 mb-6">
+              Security-minded | VAPT Trained
+            </p>
+
             <p className="text-muted text-base md:text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-              1 year of desktop app development & 1 year as a dedicated web app developer, 
-              fusing <span className="text-primary-accent font-bold">technical precision</span> with 
-              <span className="text-secondary-accent font-bold italic"> creative vision</span>.
+              I build resilient web and desktop applications with a strong focus on backend reliability,
+              clean architecture, and secure delivery.
             </p>
             
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-              <motion.button 
+              <motion.a 
+                href="#projects"
                 whileHover={{ scale: 1.05, boxShadow: "0 15px 30px -10px rgba(0,0,0,0.1)" }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary px-8 py-4 text-sm shadow-xl"
+                className="btn-primary px-8 py-4 text-sm shadow-xl inline-flex items-center justify-center"
               >
                 Explore Portfolio
-              </motion.button>
+              </motion.a>
               <motion.a 
                 href={resumeFile}
                 download="Vishal_Prajapati_Resume.pdf"

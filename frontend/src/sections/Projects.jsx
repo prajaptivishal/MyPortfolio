@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const Projects = () => {
+  const [expandedProject, setExpandedProject] = useState(null);
+
   const projects = [
     {
       title: "QacaShield",
@@ -10,7 +13,8 @@ const Projects = () => {
       background: "linear-gradient(135deg,#f9e4c5,#e1c086,#b37a3c)",
       icon: "🛡️",
       stats: "Real-time AI",
-      link: "#"
+      techStack: ["Java", "Spring Boot", "React", "MySQL"],
+      caseStudy: "I focused on secure user verification, geofenced workflow logic, and a clean mobile-first experience for field teams."
     },
     {
       title: "Workflow Automation",
@@ -20,7 +24,8 @@ const Projects = () => {
       background: "linear-gradient(135deg,#f8e0c5,#e3b07a,#c07433)",
       icon: "⚙️",
       stats: "60% Efficiency",
-      link: "#"
+      techStack: ["Java", "Spring Boot", "Flowable", "PostgreSQL"],
+      caseStudy: "I mapped repetitive approval flows into a BPMN-driven process and streamlined operations to cut manual effort significantly."
     },
     {
       title: "IT Metrics Dashboard",
@@ -30,7 +35,8 @@ const Projects = () => {
       background: "linear-gradient(135deg,#f5e4c8,#dcba7f,#aa7637)",
       icon: "📊",
       stats: "Zero Latency",
-      link: "#"
+      techStack: ["Python", "Flask", "Chart.js", "PostgreSQL"],
+      caseStudy: "I built a lightweight monitoring layer that brought system health into one clear operational view for faster decisions."
     },
     {
       title: "Smart Shoe IoT",
@@ -40,9 +46,14 @@ const Projects = () => {
       background: "linear-gradient(135deg,#f7ddc6,#e09a6d,#b2623a)",
       icon: "👟",
       stats: "Assistive Tech",
-      link: "#"
+      techStack: ["IoT", "GPS", "Embedded", "React"],
+      caseStudy: "I combined sensing, location tracking, and a simple interface to create a practical assistive experience for everyday use."
     }
   ];
+
+  const toggleProject = (index) => {
+    setExpandedProject(expandedProject === index ? null : index);
+  };
 
   return (
     <section id="projects" className="py-24 px-6 overflow-hidden relative projects-antique-bg">
@@ -131,9 +142,20 @@ const Projects = () => {
                     {project.title}
                   </h4>
                   
-                  <p className="text-primary-accent/80 text-[14px] md:text-[15px] leading-relaxed mb-10 flex-grow font-medium">
+                  <p className="text-primary-accent/80 text-[14px] md:text-[15px] leading-relaxed mb-4 flex-grow font-medium">
                     {project.description}
                   </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.techStack.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2.5 py-1 rounded-full bg-white/70 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-accent/80 border border-black/10"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
 
                   <div className="flex items-center justify-between pt-6 border-t border-black/30 text-primary-accent">
                     <div className="flex items-center gap-2">
@@ -143,17 +165,33 @@ const Projects = () => {
                       </span>
                     </div>
                     
-                    <motion.a 
-                      href={project.link}
+                    <motion.button
+                      type="button"
                       whileHover={{ x: 5 }}
+                      onClick={() => toggleProject(index)}
                       className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em]"
                     >
-                      View Project
+                      {expandedProject === index ? "Hide Case Study" : "View Case Study"}
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                       </svg>
-                    </motion.a>
+                    </motion.button>
                   </div>
+
+                  {expandedProject === index && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-4 rounded-2xl border border-black/10 bg-white/70 p-4"
+                    >
+                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary-accent mb-2">
+                        Case Study
+                      </p>
+                      <p className="text-sm text-primary-accent/80 leading-relaxed">
+                        {project.caseStudy}
+                      </p>
+                    </motion.div>
+                  )}
                 </div>
 
                 {/* Corner Decorative Element */}

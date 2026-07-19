@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const MetricsBar = () => {
   const metrics = [
-    { value: "8.01", label: "B.Tech CGPA", sub: "Academic Excellence" },
+    { value: "8.01/10", label: "B.Tech CGPA", sub: "Academic Excellence" },
     { value: "60%", label: "Effort Reduction", sub: "Operational Impact" },
     { value: "Full-Stack", label: "Developer", sub: "Engineering Core" },
     { value: "VAPT", label: "Specialist", sub: "Security Focus" }
